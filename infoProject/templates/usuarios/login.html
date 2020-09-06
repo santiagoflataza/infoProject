@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+
 {% block content%}
 
 <div class="col-8 text-center">
@@ -17,12 +17,10 @@
     {%for message in messages%}
       <p id="messages">{{message}}</p>
     {% endfor %}
-  <p>no tenes cuenta?</p><a href="{% url 'Registro' %}">Registrate</a>
-    
+
     <p class="mt-5 mb-3 text-muted">© info-2020</p>
   </form>
 </div>
 
 
 {% endblock %}
-
