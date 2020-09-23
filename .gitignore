@@ -1,5 +1,5 @@
-/infoProject/apps/usuarios/__pycache__
-/infoProject/apps/usuarios/migrations
+/apps/usuarios/__pycache__/
+/apps/usuarios/migrations/
 
-/infoProject/infoProject/__pycache__
-/infoProject/infoProject/settings/__pycache__
+/infoProject/__pycache__/
+/infoProject/settings/__pycache__/
