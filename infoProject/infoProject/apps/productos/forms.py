@@ -23,7 +23,7 @@ class ProductCreationForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = '__all__'
+        fields = ['codigo','nombre','descripcion','imagen']
 
 class ModificacionProducto(forms.ModelForm):
 

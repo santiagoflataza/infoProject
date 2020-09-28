@@ -5,12 +5,7 @@
 <h1>FORMULARIO PARA CREAR UN PRODUCTO!</h1>
 {{form.errors}}
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-  <div class="row">
-      <div style="display: none;" class="col-lg-12 mt-2 mb-2">
-          {{form.usuario}}
-
-      </div>
-  </div>
+  
   <div class="row">
       <div class="col-lg-12  mb-2 ">
           {{form.nombre}}
