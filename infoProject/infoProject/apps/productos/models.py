@@ -10,9 +10,12 @@ class Producto(models.Model):
 	nombre = models.CharField(max_length = 80)
 	descripcion = models.TextField(null = True)
 	imagen = models.ImageField(upload_to="productos",null = True,blank=True)
+	
 
 	def __str__(self):
 		return self.nombre
 
 	def get_product_userid(self):
 		return self.usuario
+
+	

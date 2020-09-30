@@ -1,5 +1,6 @@
 from django.db import models
 from apps.usuarios.models import Usuario
+from apps.rubros.models import Rubro
 from PIL import Image
 
 class Profile(models.Model):
@@ -9,7 +10,7 @@ class Profile(models.Model):
     instagram = models.CharField(max_length=30, default="Instagram...")
     twitter = models.CharField(max_length=30, default="@Twitter...")
     telefono = models.BigIntegerField(default=0)
-    
+    rubro = models.ForeignKey(Rubro, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Perfil de {self.user.username}'
@@ -18,7 +19,7 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
-
+        print(img)
         if img.height > 300 or img.width >300:
             output_size = (300,300)
             img.thumbnail(output_size)

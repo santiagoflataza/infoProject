@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import ProductCreationForm, ModificacionProducto
 from .models import Usuario, Producto, Profile
-
+from django.contrib.messages.views import SuccessMessageMixin
 # VISTA BASADA EN FUNCIONES
 #def Listar(request):
 #	return render(request,'productos/listar.html')
@@ -27,16 +27,17 @@ def Crear(request):
 	return render(request, 'users/login.html', {'form': form})
 '''
 
-class Crear(LoginRequiredMixin, CreateView, Usuario):
+class Crear(SuccessMessageMixin,LoginRequiredMixin, CreateView):
+
 	model = Producto
 	form_class = ProductCreationForm
-	template_name = 'productos/crear.html'
-	success_url = reverse_lazy('login')
+	template_name = 'productos/contenedorCrearProducto.html'
+	success_url = reverse_lazy('productos:crear')
+	success_message = " Su producto ha sido creado exitosamente "
 	
 	def form_valid(self, form):
 		form.instance.usuario = self.request.user
 		return super().form_valid(form)
-
 
 class Modificar(UpdateView):
 	model = Producto
@@ -44,12 +45,8 @@ class Modificar(UpdateView):
 	template_name = 'productos/modificar.html'
 	success_url = reverse_lazy('productos:mostrar')
 
-@login_required
-def Mostrar(request):
-	context = {}
-	todos = Producto.objects.all()
-	context['productos'] = todos
-	return render(request,'productos/mostrar.html',context)
+
+
 
 class Eliminar(DeleteView):
 	model = Producto
